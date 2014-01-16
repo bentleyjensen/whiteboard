@@ -1,0 +1,4 @@
+* Dots throw events
+* Event causes log of that dot's color and coords
+* Onload grab log and make dots
+* current connections look for other dot events

@@ -98,10 +98,16 @@ var colorPicker= function (number){
         userColor = colors[number];
         var clrname = colorNames[number];
 
+        //colorTaken[number]=true;
+        console.log((number), clrname, userColor);
+    } else if (number>=6) {
+        number = number%6;
+        userColor = colors[number];
+        var clrname = colorNames[number];
 
         //colorTaken[number]=true;
         console.log((number), clrname, userColor);
-    } else if (number===undefined){
+    }else if (number===undefined){
         //random number up to 6
         var random = Math.floor(Math.random()*6);
 

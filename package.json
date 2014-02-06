@@ -9,8 +9,9 @@
   "author": "Bentley Jensen",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "hapi": "~1.20.0",
+    "hapi": "~2.1.2",
     "webrtc": "",
-    "primus": "~1.5.2"
+    "primus": "~1.5.2",
+    "ws": "~0.4.31"
   }
 }

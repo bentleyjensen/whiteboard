@@ -107,18 +107,18 @@ primus.on('connection', function (spark) {
 
     connections.push(spark);
     
-
+    console.log("New connection! There are now " + connections.length + " connections.");
+    
     //log the array of connection id's every time there's a new one
     for (var i = 0; i < connections.length; i++) {
         console.log(connections[i].id);
     };
-    console.log("New connection! There are now " + connections.length + " connections.");
 
     if (log.length>0) {
         log.map(function (value, index, array) {
             spark.write(value);
         });
-        console.log("Log served to " + spark.id);
+        console.log("Log served to " + spark.id + '\n');
     } //else{spark.write("No one has drawn yet. Be the first!")};
 
 
@@ -134,13 +134,7 @@ primus.on('connection', function (spark) {
                 log = [];
                 primus.write('erased!');
             };
-            //if they want the connections, just give them the list of id's
-            /*if (data=='requestConnections'){ 
-                console.log("this guy wants the connections");
-                for (var i = 0; i < connections.length; i++) {
-                    spark.write(connections[i].id);
-                };
-            } else */if(typeof(data)=='object' && data.id=='dot'){
+            if(typeof(data)=='object' && data.id=='dot'){
            
                 log.push(data);
 
@@ -155,5 +149,14 @@ primus.on('connection', function (spark) {
     });
 
     
+});
+
+primus.on("disconnection", function (spark){
+    var sparkIndex = connections.indexOf(spark)
+    connections.splice(sparkIndex, 1);
+    console.log("Disconnection! There are now " + connections.length + " connections.");
+    console.log(spark.id + '\n')
+
+
 });
                                                                                    

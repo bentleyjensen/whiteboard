@@ -1,5 +1,4 @@
 var primus = Primus.connect('adams-macbook-pro-8.local/draw');
-var myId;
 
 primus.on('open', function () {
 	console.log("Houston, we have liftoff.");
